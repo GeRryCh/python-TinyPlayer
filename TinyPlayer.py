@@ -8,7 +8,7 @@ class NotesFileParseException(Exception):
     """Raised when there's a problem parsing a note file"""
     pass
 
-class Player:
+class TinyPlayer:
     def __init__(self, bpm):
         self.__note_length = 60000/bpm/2
         # notes were recorded for 120BPM; 1/8 length = 60000/120/2
@@ -101,7 +101,7 @@ def main():
     parser.add_argument("--song", required=True, help='path to song text file')
     parser.add_argument("--bpm", required=False, default=120, help='A tempo of a song. Default 120bpm')
     args = vars(parser.parse_args())
-    player = Player(args["bpm"])
+    player = TinyPlayer(args["bpm"])
     player.play_song(args["song"])
 
 
